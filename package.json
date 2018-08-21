@@ -1,7 +1,7 @@
 {
   "name": "evoke",
   "version": "1.0.0",
-  "description": "## Overview evoke is a dynamic music visualizer created using the SoundJS, the Web Audio API, and D3.js. evoke will analyze the frequency, amplitude, time, and other aspects of the input signal using the Web Audio API, and reactively draw and transform SVG based on this data taken from the signal using D3.js.",
+  "description": "## Overview evoke is a dynamic music visualizer created using the SoundJS, the Web Audio API, and Three.js. evoke will analyze the frequency, amplitude, time, and other aspects of the input signal using the Web Audio API, and reactively draw and transform SVG based on this data taken from the signal using Three.js.",
   "main": "webpack.config.js",
   "directories": {
     "doc": "docs",
@@ -26,7 +26,6 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
-    "source-map": "^0.7.3",
     "three": "^0.95.0",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
