@@ -27,6 +27,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "source-map": "^0.7.3",
+    "three": "^0.95.0",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
   }
