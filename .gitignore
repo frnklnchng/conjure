@@ -34,4 +34,6 @@ npm-debug.log
 
 # Custom
 /test
+/experimental
 /docs/wireframe.xml
+/old/truth.mp3
