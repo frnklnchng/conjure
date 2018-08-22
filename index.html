@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>evoke</title>
 
-<head>
-  <meta charset="utf-8">
-  <title>evoke</title>
-  <link rel="stylesheet" type="text/css" href="./stylesheets/evoke.css">
-  <script src="./javascripts/bundle.js"></script>
-  <audio id="audio" src="./test/truth.mp3"></audio>
-</head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/00-reset.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/01-evoke.css">
 
-<body>
-  <div id="visual" height="100vh" width="100vw"></div>>
-</body>
-
+    <!-- <audio id="audio" src="./test/truth.mp3"></audio> -->
+  </head>
+  <body>
+    <input id="input" type="file" accept="audio/*"/>
+    <p id="loading"><img src="./assets/loading.svg"/></p>
+    
+    <script src="./javascripts/p5.min.js"></script>
+    <script src="./javascripts/p5.dom.min.js"></script>
+    <script src="./javascripts/p5.sound.min.js"></script>
+    <script src="./javascripts/evoke.js"></script>
+  </body>
 </html>
