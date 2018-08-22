@@ -25,8 +25,8 @@ function setup() {
   sensitivitySlider = createSlider(0, 1.0, 0.85, 0.05);
   sensitivitySlider.position(window.innerWidth - 141, 70);
 
-  // frequencySlider = createSlider(0, 1.0, 0.85, 0.05);
-  // frequencySlider.position(2, 4096, 256);
+  frequencySlider = createSlider(4, 8, 7, 1);
+  frequencySlider.position(window.innerWidth - 141, 100);
 
   // playPause = createButton('Play');
   // playPause.position(10, 110);
@@ -36,7 +36,8 @@ function setup() {
 function draw() {
   const volume = volumeSlider.value();
   const smooth = sensitivitySlider.value(); // Sensitivity toggle
-  const waveform = 256; // Frequencies toggle
+  const waveform = Math.pow(2, frequencySlider.value()); // Frequencies toggle
+  // const waveform = 256;
   
   background(33, 33, 36);
   // background(0, 0, 0);
@@ -48,7 +49,7 @@ function draw() {
   if (audio && audio.isLoaded() && !audio.isPaused() && !audio.isPlaying()) {
     loading.classList.remove("true");
 
-    fft = new p5.FFT(smooth, waveform);
+    fft = new p5.FFT(smooth, 1024);
 
     audio.play();
   }
@@ -62,31 +63,33 @@ function draw() {
     noStroke(); // No outlines
     fill("rgba(0, 255, 204, 0.25)");
 
+    // const bins = Math.min();
     for (let i = 0; i < waveform; i++) {
-      let x = map(i, 0, waveform, 0, width);
-      let y = map(spectrum[i], 0, 255, height, 0) - height;
+      const w = map(i, 0, waveform, 0, width);
+      const h = map(spectrum[i], 0, 255, height, 0) - height;
       
-      rect(x, height, width / waveform, y);
+      rect(w, height, width / waveform, h * 0.4);
 
       // let r = 0;
       // let g = 200 * (i / waveform);
-      // let b = y + (50 * (i / waveform));
+      // let b = h + (50 * (i / waveform));
 
       // fill(r, g, b);
     }
+
+    const bass = fft.getEnergy("bass");
+    const mid = fft.getEnergy("mid");
+    const treble = fft.getEnergy("treble");
+
+    const mapBass = map(bass, 0, 255, -100, 100);
+    const mapMid = map(mid, 0, 255, -150, 150);
+    const mapTreble = map(treble, 0, 255, -200, 200);
+
+    const lowMid = fft.getEnergy("lowMid");
+    const mapLowMid = map(lowMid, 0, 255, -125, 125);
+    const radius = mapLowMid * 1.5;
     
-    fft.analyze();
-
-    var bass = fft.getEnergy("bass");
-    var mid = fft.getEnergy("mid");
-    var treble = fft.getEnergy("treble");
-
-    var mapBass = map(bass, 0, 255, -100, 100);
-    var mapMid = map(mid, 0, 255, -150, 150);
-    var mapTreble = map(treble, 0, 255, -200, 200);
-
-    // let radius = 200;
-    let radius = mapBass * 1.5;
+    // let radius = mapMid * 1.5;
     
     translate(window.innerWidth / 2, window.innerHeight / 2);
     stroke(0, 255, 204);
@@ -108,8 +111,9 @@ function draw() {
 
       strokeWeight(2);
       stroke(255, 255, 255);
-      point(mapBass, radius * 2);
-      point(mapMid, radius * 1.5);
+      point(mapTreble, radius * 1.3);
+      point(mapMid, radius * 1.4);
+      point(mapBass, radius * 1.5);
     }
   }
 }
