@@ -4,18 +4,18 @@ body {
 }
 
 #input {
-  font: normal 12px 'Open Sans', sans-serif;
+  font: normal 16px 'Open Sans', sans-serif;
   position: fixed;
   top: 10px;
   left: 10px;
-  width: 300px;
+  width: 600px;
 }
 
 #loading {
   position: fixed;
   top: 50%;
   left: 50%; 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); 
   display: none;
 }
 

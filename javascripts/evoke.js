@@ -60,7 +60,7 @@ function draw() {
     const spectrum = fft.analyze();
     
     noStroke(); // No outlines
-    fill(0, 255, 204);
+    fill("rgba(0, 255, 204, 0.25)");
 
     for (let i = 0; i < waveform; i++) {
       let x = map(i, 0, waveform, 0, width);
@@ -73,6 +73,43 @@ function draw() {
       // let b = y + (50 * (i / waveform));
 
       // fill(r, g, b);
+    }
+    
+    fft.analyze();
+
+    var bass = fft.getEnergy("bass");
+    var mid = fft.getEnergy("mid");
+    var treble = fft.getEnergy("treble");
+
+    var mapBass = map(bass, 0, 255, -100, 100);
+    var mapMid = map(mid, 0, 255, -150, 150);
+    var mapTreble = map(treble, 0, 255, -200, 200);
+
+    // let radius = 200;
+    let radius = mapBass * 1.5;
+    
+    translate(window.innerWidth / 2, window.innerHeight / 2);
+    stroke(0, 255, 204);
+
+
+    for (i = 0; i < waveform; i++) {
+      rotate(4 * PI / waveform);
+
+      strokeWeight(1);
+
+      stroke(0, 255, 204);
+      line(mapBass, radius * 0.75 / 2, 0, radius * 0.75);
+
+      stroke(255, 255, 255);
+      line(mapMid, radius / 2, 0, radius);
+
+      stroke(0, 255, 204);
+      line(mapTreble, radius * 1.2 / 2, 0, radius * 1.2);
+
+      strokeWeight(2);
+      stroke(255, 255, 255);
+      point(mapBass, radius * 2);
+      point(mapMid, radius * 1.5);
     }
   }
 }
