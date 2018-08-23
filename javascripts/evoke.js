@@ -16,6 +16,10 @@ file.onchange = function() {
 }
 
 function setup() {
+  // Will only work on server
+  audio = loadSound('../assets/truth.mp3');
+  loading.classList.add("true");
+  
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.style('display', 'block');
 
