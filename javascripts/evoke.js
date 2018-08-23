@@ -45,7 +45,7 @@ function setup() {
   volumeSlider.addClass('volume');
   volumeSlider.addClass('slider');
   
-  sensitivitySlider = createSlider(0, 0.99, 0.85, 0.01);
+  sensitivitySlider = createSlider(-0.99, 0, -0.85, 0.01);
   sensitivitySlider.addClass('sensitivity');
   sensitivitySlider.addClass('slider');
 
@@ -64,7 +64,7 @@ function setup() {
 
 function draw() {
   const volume = volumeSlider.value();
-  const smooth = sensitivitySlider.value(); // Sensitivity toggle
+  const smooth = -sensitivitySlider.value(); // Sensitivity toggle
   const bars = Math.pow(2, barSlider.value()); // Frequencies toggle
   const halos = Math.pow(2, haloSlider.value()); // Frequencies toggle
   // const bars = 256;
