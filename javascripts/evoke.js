@@ -119,9 +119,13 @@ function draw() {
     // const lowMid = fft.getEnergy("lowMid");
     // const mapLowMid = map(lowMid, 0, 255, -125, 125);
     // const radius = mapLowMid * 2;
+
+    const combo = fft.getEnergy("bass", "lowMid");
+    const mapCombo = map(combo, 0, 255, -125, 125);
+    const radius = mapCombo * 2;
     
     // let radius = Math.max(mapBass, mapTreble) * 2;
-    let radius = mapBass * 2;
+    // let radius = mapBass * 2;
     
     translate(window.innerWidth / 2, window.innerHeight / 2);
     stroke(0, 255, 204);
