@@ -17,7 +17,7 @@ file.onchange = function() {
 
 function setup() {
   // Will only work on server
-  audio = loadSound('https://github.com/frnklnchng/evoke/raw/master/assets/truth.mp3');
+  audio = loadSound('https://raw.githubusercontent.com/frnklnchng/evoke/master/assets/truth.mp3');
   loading.classList.add("true");
   
   canvas = createCanvas(window.innerWidth, window.innerHeight);
