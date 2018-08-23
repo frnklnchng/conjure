@@ -17,7 +17,7 @@ file.onchange = function() {
 
 function setup() {
   // Will only work on server
-  audio = loadSound('../assets/truth.mp3');
+  audio = loadSound('https://github.com/frnklnchng/evoke/raw/master/assets/truth.mp3');
   loading.classList.add("true");
   
   canvas = createCanvas(window.innerWidth, window.innerHeight);
@@ -126,37 +126,45 @@ function draw() {
 
     const combo = fft.getEnergy("bass", "lowMid");
     const mapCombo = map(combo, 0, 255, -125, 125);
-    const radius = mapCombo * 2;
+    // const radius = mapCombo * 2;
     
     // let radius = Math.max(mapBass, mapTreble) * 2;
     // let radius = mapBass * 2;
+
+    let bassRadius = mapCombo * 0.7;
+    let midRadius = mapCombo * 0.7;
+    let trebleRadius = mapCombo * 0.7;
     
     translate(window.innerWidth / 2, window.innerHeight / 2);
     stroke(0, 255, 204);
 
 
     for (i = 0; i < halos; i++) {
+      // bassRadius = mapBass * 0.5;
+      // midRadius = mapMid * 0.5;
+      // trebleRadius = mapTreble * 0.5;
+
       rotate(4 * PI / halos);
 
       // Draw lines
       strokeWeight(1);
 
       stroke(0, 255, 204);
-      line(mapBass, radius * 0.75 / 2, 0, radius * 0.75);
+      line(mapBass, bassRadius * 0.75 / 2, 0, bassRadius * 0.75);
 
       stroke(255, 255, 255);
-      line(mapMid, radius / 2, 0, radius);
+      line(mapMid, midRadius / 2, 0, midRadius);
 
       stroke(0, 255, 204);
-      line(mapTreble, radius * 1.2 / 2, 0, radius * 1.2);
+      line(mapTreble, trebleRadius * 1.2 / 2, 0, trebleRadius * 1.2);
 
       // Draw points
       strokeWeight(2);
       stroke(255, 255, 255);
 
-      point(mapTreble, radius * 1.3);
-      point(mapMid, radius * 1.4);
-      point(mapBass, radius * 1.5);
+      point(mapBass, bassRadius * 1.5);
+      point(mapMid, midRadius * 1.4);
+      point(mapTreble, trebleRadius * 1.3);
     }
   }
 }
