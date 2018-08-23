@@ -60,10 +60,6 @@ function setup() {
   haloSlider = createSlider(3, 8, 7, 1);
   haloSlider.addClass('halos');
   haloSlider.addClass('slider');
-
-  // playPause = createButton('Play');
-  // playPause.position(10, 110);
-  // playPause.mousePressed(togglePlayback());
 }
 
 function draw() {
@@ -84,8 +80,6 @@ function draw() {
     loading.classList.remove("true");
 
     fft = new p5.FFT(smooth, 2048);
-
-    audio.play();
   }
 
   if (fft) {
@@ -113,37 +107,28 @@ function draw() {
     }
 
     const bass = fft.getEnergy("bass");
+    // const lowMid = fft.getEnergy("lowMid");
     const mid = fft.getEnergy("mid");
+    // const highMid = fft.getEnergy("highMid");
     const treble = fft.getEnergy("treble");
 
     const mapBass = map(bass, 0, 255, -100, 100);
-    const mapMid = map(mid, 0, 255, -150, 150);
-    const mapTreble = map(treble, 0, 255, -200, 200);
-
-    // const lowMid = fft.getEnergy("lowMid");
     // const mapLowMid = map(lowMid, 0, 255, -125, 125);
-    // const radius = mapLowMid * 2;
+    const mapMid = map(mid, 0, 255, -150, 150);
+    // const mapHighMid = map(highMid, 0, 255, -175, 175);
+    const mapTreble = map(treble, 0, 255, -200, 200);
 
     const combo = fft.getEnergy("bass", "lowMid");
     const mapCombo = map(combo, 0, 255, -125, 125);
-    // const radius = mapCombo * 2;
-    
-    // let radius = Math.max(mapBass, mapTreble) * 2;
-    // let radius = mapBass * 2;
 
-    let bassRadius = mapCombo * 0.7;
-    let midRadius = mapCombo * 0.7;
-    let trebleRadius = mapCombo * 0.7;
+    let bassRadius = mapBass;
+    let midRadius = mapMid;
+    let trebleRadius = mapTreble;
     
     translate(window.innerWidth / 2, window.innerHeight / 2);
     stroke(0, 255, 204);
 
-
     for (i = 0; i < halos; i++) {
-      // bassRadius = mapBass * 0.5;
-      // midRadius = mapMid * 0.5;
-      // trebleRadius = mapTreble * 0.5;
-
       rotate(4 * PI / halos);
 
       // Draw lines
@@ -165,6 +150,11 @@ function draw() {
       point(mapBass, bassRadius * 1.5);
       point(mapMid, midRadius * 1.4);
       point(mapTreble, trebleRadius * 1.3);
+
+      // Experimental
+      // point(mapBass, bassRadius * 1.6);
+      // point(mapMid, midRadius * 1.7);
+      // point(mapTreble, trebleRadius * 1.8);
     }
   }
 }
