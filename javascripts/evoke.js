@@ -49,7 +49,7 @@ function setup() {
   sensitivitySlider.addClass('sensitivity');
   sensitivitySlider.addClass('slider');
 
-  barSlider = createSlider(0, 11, 11, 1);
+  barSlider = createSlider(0, 11, 9, 1);
   barSlider.addClass('bars');
   barSlider.addClass('slider');
 
