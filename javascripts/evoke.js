@@ -25,8 +25,11 @@ function setup() {
   sensitivitySlider = createSlider(0, 1.0, 0.85, 0.05);
   sensitivitySlider.position(window.innerWidth - 141, 70);
 
-  frequencySlider = createSlider(4, 8, 7, 1);
-  frequencySlider.position(window.innerWidth - 141, 100);
+  barSlider = createSlider(0, 11, 7, 1);
+  barSlider.position(window.innerWidth - 141, 100);
+
+  haloSlider = createSlider(3, 8, 7, 1);
+  haloSlider.position(window.innerWidth - 141, 130);
 
   // playPause = createButton('Play');
   // playPause.position(10, 110);
@@ -36,8 +39,9 @@ function setup() {
 function draw() {
   const volume = volumeSlider.value();
   const smooth = sensitivitySlider.value(); // Sensitivity toggle
-  const waveform = Math.pow(2, frequencySlider.value()); // Frequencies toggle
-  // const waveform = 256;
+  const bars = Math.pow(2, barSlider.value()); // Frequencies toggle
+  const halos = Math.pow(2, haloSlider.value()); // Frequencies toggle
+  // const bars = 256;
   
   background(33, 33, 36);
   // background(0, 0, 0);
@@ -49,7 +53,7 @@ function draw() {
   if (audio && audio.isLoaded() && !audio.isPaused() && !audio.isPlaying()) {
     loading.classList.remove("true");
 
-    fft = new p5.FFT(smooth, 1024);
+    fft = new p5.FFT(smooth, 2048);
 
     audio.play();
   }
@@ -59,22 +63,24 @@ function draw() {
     fft.smooth(smooth);
 
     const spectrum = fft.analyze();
-    
-    noStroke(); // No outlines
-    fill("rgba(0, 255, 204, 0.25)");
 
-    // const bins = Math.min();
-    for (let i = 0; i < waveform; i++) {
-      const w = map(i, 0, waveform, 0, width);
-      const h = map(spectrum[i], 0, 255, height, 0) - height;
-      
-      rect(w, height, width / waveform, h * 0.4);
-
-      // let r = 0;
-      // let g = 200 * (i / waveform);
-      // let b = h + (50 * (i / waveform));
-
-      // fill(r, g, b);
+    if (bars !== 1) {
+      noStroke(); // No outlines
+      fill("rgba(0, 255, 204, 0.25)");
+  
+      // const bins = Math.min();
+      for (let i = 0; i < bars; i++) {
+        const w = map(i, 0, bars, 0, width);
+        const h = map(spectrum[i], 0, 255, height, 0) - height;
+        
+        rect(w, height, width / bars, h * 0.66);
+  
+        // let r = 0;
+        // let g = 200 * (i / bars);
+        // let b = h + (50 * (i / bars));
+  
+        // fill(r, g, b);
+      }
     }
 
     const bass = fft.getEnergy("bass");
@@ -87,16 +93,16 @@ function draw() {
 
     const lowMid = fft.getEnergy("lowMid");
     const mapLowMid = map(lowMid, 0, 255, -125, 125);
-    const radius = mapLowMid * 1.5;
+    const radius = mapLowMid * 2.5;
     
-    // let radius = mapMid * 1.5;
+    // let radius = mapBass * 2;
     
     translate(window.innerWidth / 2, window.innerHeight / 2);
     stroke(0, 255, 204);
 
 
-    for (i = 0; i < waveform; i++) {
-      rotate(4 * PI / waveform);
+    for (i = 0; i < halos; i++) {
+      rotate(4 * PI / halos);
 
       strokeWeight(1);
 
