@@ -16,20 +16,46 @@ file.onchange = function() {
 }
 
 function setup() {
-  const canvas = createCanvas(window.innerWidth, window.innerHeight);
+  canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.style('display', 'block');
 
-  volumeSlider = createSlider(0, 1.0, 0.5, 0.05);
-  volumeSlider.position(window.innerWidth - 141, 40);
-  
-  sensitivitySlider = createSlider(0, 1.0, 0.85, 0.05);
-  sensitivitySlider.position(window.innerWidth - 141, 70);
+  const name = createDiv('evoke');
+  name.addClass('name');
 
-  barSlider = createSlider(0, 11, 7, 1);
-  barSlider.position(window.innerWidth - 141, 100);
+  const instructions = createDiv('press the spacebar to play/pause');
+  instructions.addClass('instructions');
+
+  const volumeLabel = createDiv('volume');
+  volumeLabel.addClass('volumeLabel');
+  volumeLabel.addClass('label');
+
+  const sensitivityLabel = createDiv('sensitivity');
+  sensitivityLabel.addClass('sensitivityLabel');
+  sensitivityLabel.addClass('label');
+
+  const barsLabel = createDiv('bars');
+  barsLabel.addClass('barsLabel');
+  barsLabel.addClass('label');
+
+  const halosLabel = createDiv('halos');
+  halosLabel.addClass('halosLabel');
+  halosLabel.addClass('label');
+
+  volumeSlider = createSlider(0, 1.0, 0.5, 0.01);
+  volumeSlider.addClass('volume');
+  volumeSlider.addClass('slider');
+  
+  sensitivitySlider = createSlider(0, 0.99, 0.85, 0.01);
+  sensitivitySlider.addClass('sensitivity');
+  sensitivitySlider.addClass('slider');
+
+  barSlider = createSlider(0, 11, 11, 1);
+  barSlider.addClass('bars');
+  barSlider.addClass('slider');
 
   haloSlider = createSlider(3, 8, 7, 1);
-  haloSlider.position(window.innerWidth - 141, 130);
+  haloSlider.addClass('halos');
+  haloSlider.addClass('slider');
 
   // playPause = createButton('Play');
   // playPause.position(10, 110);
@@ -68,7 +94,6 @@ function draw() {
       noStroke(); // No outlines
       fill("rgba(0, 255, 204, 0.25)");
   
-      // const bins = Math.min();
       for (let i = 0; i < bars; i++) {
         const w = map(i, 0, bars, 0, width);
         const h = map(spectrum[i], 0, 255, height, 0) - height;
@@ -91,11 +116,12 @@ function draw() {
     const mapMid = map(mid, 0, 255, -150, 150);
     const mapTreble = map(treble, 0, 255, -200, 200);
 
-    const lowMid = fft.getEnergy("lowMid");
-    const mapLowMid = map(lowMid, 0, 255, -125, 125);
-    const radius = mapLowMid * 2.5;
+    // const lowMid = fft.getEnergy("lowMid");
+    // const mapLowMid = map(lowMid, 0, 255, -125, 125);
+    // const radius = mapLowMid * 2;
     
-    // let radius = mapBass * 2;
+    // let radius = Math.max(mapBass, mapTreble) * 2;
+    let radius = mapBass * 2;
     
     translate(window.innerWidth / 2, window.innerHeight / 2);
     stroke(0, 255, 204);
@@ -104,6 +130,7 @@ function draw() {
     for (i = 0; i < halos; i++) {
       rotate(4 * PI / halos);
 
+      // Draw lines
       strokeWeight(1);
 
       stroke(0, 255, 204);
@@ -115,8 +142,10 @@ function draw() {
       stroke(0, 255, 204);
       line(mapTreble, radius * 1.2 / 2, 0, radius * 1.2);
 
+      // Draw points
       strokeWeight(2);
       stroke(255, 255, 255);
+
       point(mapTreble, radius * 1.3);
       point(mapMid, radius * 1.4);
       point(mapBass, radius * 1.5);

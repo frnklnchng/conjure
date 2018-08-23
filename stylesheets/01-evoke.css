@@ -4,11 +4,13 @@ body {
 }
 
 #input {
-  font: normal 16px 'Open Sans', sans-serif;
+  font: normal 12px 'Open Sans', sans-serif;
   position: fixed;
   top: 10px;
   left: 10px;
   width: 600px;
+  opacity: 0;
+  transition: 1s ease;
 }
 
 #loading {
@@ -21,4 +23,124 @@ body {
 
 #loading.true {
   display: inherit;
+}
+
+.name {
+  font: normal 48px 'Open Sans', sans-serif;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  opacity: 0;
+  transition: 1.8s ease;
+}
+
+.instructions {
+  font: normal 24px 'Open Sans', sans-serif;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: 0.6s ease;
+}
+
+.volumeLabel {
+  font: normal 12px 'Open Sans', sans-serif;
+  position: fixed;
+  top: 10px;
+  right: 155px;
+  opacity: 0;
+  transition: 0.6s ease;
+}
+
+.sensitivityLabel {
+  font: normal 12px 'Open Sans', sans-serif;
+  position: fixed;
+  top: 40px;
+  right: 155px;
+  opacity: 0;
+  transition: 0.6s ease;
+}
+.barsLabel {
+  font: normal 12px 'Open Sans', sans-serif;
+  position: fixed;
+  top: 70px;
+  right: 155px;
+  opacity: 0;
+  transition: 0.6s ease;
+}
+.halosLabel {
+  font: normal 12px 'Open Sans', sans-serif;
+  position: fixed;
+  top: 100px;
+  right: 155px;
+  opacity: 0;
+  transition: 0.6s ease;
+}
+
+.slider {
+  -webkit-appearance: none;
+  opacity: 0;
+  transition: 1s ease;
+  height: 12px;
+  border-radius: 10px;   
+  outline: none;
+  background: #d3d3d3;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%; 
+  background: #888888;
+}
+
+.volume {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.sensitivity {
+  position: fixed;
+  top: 40px;
+  right: 10px;
+}
+
+.bars {
+  position: fixed;
+  top: 70px;
+  right: 10px;
+}
+
+.halos {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+}
+
+body:hover #input {
+  opacity: 1;
+  transition: 0.6s ease;
+}
+
+body:hover .name {
+  opacity: 1;
+  transition: 0.6s ease;
+}
+
+body:hover .instructions {
+  opacity: 1;
+  transition: 0.6s ease;
+}
+
+body:hover .label {
+  opacity: 1;
+  transition: 0.6s ease;
+}
+
+body:hover .slider {
+  opacity: 1;
+  transition: 0.6s ease;
 }
