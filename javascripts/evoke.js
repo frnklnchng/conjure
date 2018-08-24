@@ -31,8 +31,6 @@ function setup() {
   const name = createDiv('evoke');
   name.addClass('name');
 
-  github = loadImage('https://raw.githubusercontent.com/frnklnchng/evoke/master/assets/github.png');
-
   const instructions = createDiv('press the spacebar to play/pause');
   instructions.addClass('instructions');
 

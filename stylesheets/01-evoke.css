@@ -1,6 +1,7 @@
 body { 
   font: normal 16px 'Open Sans', sans-serif;
   color: white;
+  user-select: none;
 }
 
 #input {
@@ -143,5 +144,22 @@ body:hover .label {
 
 body:hover .slider {
   opacity: 1;
+  transition: 0.6s ease;
+}
+
+body:hover #github {
+  height: 48px;
+  width: 48px;
+  opacity: 1;
+  transition: 0.6s ease;
+}
+
+#github {
+  position: fixed;
+  bottom: 18px;
+  left: 152px;
+  height: 48px;
+  width: 48px;
+  opacity: 0;
   transition: 0.6s ease;
 }
