@@ -13,7 +13,7 @@ This project was created within the timeframe of a week, and I fully expect to b
   
 ### Playing local audio
 
-![Small audio load demo](docs/load.gif)
+<!-- ![Small audio load demo](docs/load.gif) -->
 
 The preloaded audio can be played by pressing the spacebar, or local audio files can be loaded through the file input at the top left corner of the application.
 
@@ -24,7 +24,7 @@ Upon successful loading, the playback and visualization starts immediately. Load
 
 The visualization consists of frequency bars lining the top and bottom of the application and the "eye" in the center. 
 
-![Small visualization demo](docs/visualization.gif)
+<!-- ![Small visualization demo](docs/visualization.gif) -->
 
 This was accomplished by analyzing the audio data in the p5 canvas, interpreting each frequency, and then mapping them each to a drawn component. Color is mapped to the the amplitude of the audio at any given time, and then redrawn at each frame.
 
