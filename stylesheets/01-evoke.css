@@ -121,12 +121,6 @@ body {
   right: 10px;
 }
 
-.colors {
-  position: fixed;
-  top: 130px;
-  right: 10px;
-}
-
 body:hover #input {
   opacity: 1;
   transition: 0.6s ease;

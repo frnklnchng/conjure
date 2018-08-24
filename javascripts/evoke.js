@@ -5,13 +5,7 @@ let fft;
 
 let newInput = false;
 
-const intensityBorder = 0.215;
-const color1 = "rgb(0, 255, 204)";
-const color2 = "rgb(255, 0, 51)";
-const color3 = "rgba(0, 255, 204, 0.25)";
-const color4 = "rgba(255, 0, 51, 0.25)";
-
-file.onchange = function() {
+file.onchange = function () {
   if (this.files[0]) {
     if (audio) {
       audio.stop();
@@ -29,7 +23,7 @@ function setup() {
   audio = loadSound('https://raw.githubusercontent.com/frnklnchng/evoke/master/assets/truth.mp3');
   loading.classList.add("true");
   amplitude = new p5.Amplitude();
-  
+
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.style('display', 'block');
 
@@ -58,7 +52,7 @@ function setup() {
   volumeSlider = createSlider(0, 1.0, 0.5, 0.01);
   volumeSlider.addClass('volume');
   volumeSlider.addClass('slider');
-  
+
   sensitivitySlider = createSlider(-0.99, 0, -0.85, 0.01);
   sensitivitySlider.addClass('sensitivity');
   sensitivitySlider.addClass('slider');
@@ -79,7 +73,7 @@ function draw() {
   const halos = Math.pow(2, haloSlider.value()); // Frequencies toggle
   const intensity = amplitude.getLevel();
   // const bars = 256;
-  
+
   background(33, 33, 36);
   // background(0, 0, 0);
 
@@ -116,42 +110,88 @@ function draw() {
     // const mapHighMid = map(highMid, 0, 255, -175, 175);
     const mapTreble = map(treble, 0, 255, -200, 200);
 
-    const combo = fft.getEnergy("bass", "lowMid");
-    const mapCombo = map(combo, 0, 255, -125, 125);
+    // const combo = fft.getEnergy("bass", "lowMid");
+    // const mapCombo = map(combo, 0, 255, -125, 125);
 
     let bassRadius = mapBass;
     let midRadius = mapMid;
     let trebleRadius = mapTreble;
 
-    if (intensity > intensityBorder) {
-      background(0, 0, 0);
+    let halosColor;
+    let barsColor;
+    
+    if (intensity > 0.2) {
+      halosColor = "rgb(255, 0, 51)";
+      barsColor = "rgba(255, 0, 51, 0.25)";
     }
+    else if (intensity > 0.1866666667) {
+      halosColor = "rgb(232, 23, 65)";
+      barsColor = "rgba(232, 23, 65, 0.25)";
+    }
+    else if (intensity > 0.1733333333) {
+      halosColor = "rgb(209, 46, 79)";
+      barsColor = "rgba(209, 46, 79, 0.25)";
+    }
+    else if (intensity > 0.16) {
+      halosColor = "rgb(185, 70, 93)";
+      barsColor = "rgba(185, 70, 93, 0.25)";
+    }
+    else if (intensity > 0.1466666667) {
+      halosColor = "rgb(162, 93, 107)";
+      barsColor = "rgba(162, 93, 107, 0.25)";
+    }
+    else if (intensity > 0.1333333334) {
+      halosColor = "rgb(139, 116, 121)";
+      barsColor = "rgba(139, 116, 121, 0.25)";
+    }
+    else if (intensity > 0.12) {
+      halosColor = "rgb(116, 139, 134)";
+      barsColor = "rgba(116, 139, 134, 0.25)";
+    }
+    else if (intensity > 0.1066666667) {
+      halosColor = "rgb(93, 162, 148)";
+      barsColor = "rgba(93, 162, 148, 0.25)";
+    }
+    else if (intensity > 0.09333333336) {
+      halosColor = "rgb(70, 185, 162)";
+      barsColor = "rgba(70, 185, 162, 0.25)";
+    }
+    else if (intensity > 0.08000000003) {
+      halosColor = "rgb(46, 209, 176)";
+      barsColor = "rgba(46, 209, 176, 0.25)";
+    }
+    else if (intensity > 0.0666666667) {
+      halosColor = "rgb(23, 232, 190)";
+      barsColor = "rgba(23, 232, 190, 0.25)";
+    }
+    else {
+      halosColor = "rgb(0, 255, 204)";
+      barsColor = "rgba(0, 255, 204, 0.25)";
+    }
+
+    // if (intensity > intensityBorder) {
+    //   background(0, 0, 0);
+    // }
 
     if (bars !== 1) {
       noStroke(); // No outlines
-      fill(color3);
+      fill(barsColor);
 
-      if (intensity > intensityBorder) {
-        fill(color4);
-      }
-  
       for (let i = 0; i < bars; i++) {
         const w = map(i, 0, bars, 0, width);
         const h = map(spectrum[i], 0, 255, height, 0) - height;
-        
+
         rect(w, height, width / bars, h * 0.66);
-  
+
         // let r = 0;
         // let g = 200 * (i / bars);
         // let b = h + (50 * (i / bars));
-  
+
         // fill(r, g, b);
       }
     }
-    
-    translate(window.innerWidth / 2, window.innerHeight / 2);
 
-    stroke(color1);
+    translate(window.innerWidth / 2, window.innerHeight / 2);
 
     for (i = 0; i < halos; i++) {
       rotate(4 * PI / halos);
@@ -159,22 +199,14 @@ function draw() {
       // Draw lines
       strokeWeight(1);
 
-      stroke(color1);
-
-      if (intensity > intensityBorder) {
-        stroke(color2);
-      }
+      stroke(halosColor);
 
       line(mapBass, bassRadius * 0.75 / 2, 0, bassRadius * 0.75);
 
       stroke(255, 255, 255);
       line(mapMid, midRadius / 2, 0, midRadius);
 
-      stroke(color1);
-
-      if (intensity > intensityBorder) {
-        stroke(color2);
-      }
+      stroke(halosColor);
 
       line(mapTreble, trebleRadius * 1.2 / 2, 0, trebleRadius * 1.2);
 
