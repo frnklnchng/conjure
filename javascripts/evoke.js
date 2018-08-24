@@ -21,7 +21,6 @@ file.onchange = function () {
 }
 
 function setup() {
-  // Will only work on server
   audio = loadSound('https://raw.githubusercontent.com/frnklnchng/evoke/master/assets/truth.mp3');
   loading.classList.add("true");
   amplitude = new p5.Amplitude();
@@ -31,6 +30,8 @@ function setup() {
 
   const name = createDiv('evoke');
   name.addClass('name');
+
+  github = loadImage('https://raw.githubusercontent.com/frnklnchng/evoke/master/assets/github.png');
 
   const instructions = createDiv('press the spacebar to play/pause');
   instructions.addClass('instructions');
