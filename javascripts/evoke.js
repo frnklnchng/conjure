@@ -3,6 +3,14 @@ let loading = document.getElementById("loading");
 let audio;
 let fft;
 
+let newInput = false;
+
+const intensityBorder = 0.215;
+const color1 = "rgb(0, 255, 204)";
+const color2 = "rgb(255, 0, 51)";
+const color3 = "rgba(0, 255, 204, 0.25)";
+const color4 = "rgba(255, 0, 51, 0.25)";
+
 file.onchange = function() {
   if (this.files[0]) {
     if (audio) {
@@ -12,6 +20,7 @@ file.onchange = function() {
 
     audio = loadSound(URL.createObjectURL(this.files[0]));
     loading.classList.add("true");
+    newInput = true;
   }
 }
 
@@ -19,6 +28,7 @@ function setup() {
   // Will only work on server
   audio = loadSound('https://raw.githubusercontent.com/frnklnchng/evoke/master/assets/truth.mp3');
   loading.classList.add("true");
+  amplitude = new p5.Amplitude();
   
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.style('display', 'block');
@@ -67,6 +77,7 @@ function draw() {
   const smooth = -sensitivitySlider.value(); // Sensitivity toggle
   const bars = Math.pow(2, barSlider.value()); // Frequencies toggle
   const halos = Math.pow(2, haloSlider.value()); // Frequencies toggle
+  const intensity = amplitude.getLevel();
   // const bars = 256;
   
   background(33, 33, 36);
@@ -80,6 +91,11 @@ function draw() {
     loading.classList.remove("true");
 
     fft = new p5.FFT(smooth, 2048);
+
+    if (newInput === true) {
+      audio.play();
+      newInput = false;
+    }
   }
 
   if (fft) {
@@ -87,24 +103,6 @@ function draw() {
     fft.smooth(smooth);
 
     const spectrum = fft.analyze();
-
-    if (bars !== 1) {
-      noStroke(); // No outlines
-      fill("rgba(0, 255, 204, 0.25)");
-  
-      for (let i = 0; i < bars; i++) {
-        const w = map(i, 0, bars, 0, width);
-        const h = map(spectrum[i], 0, 255, height, 0) - height;
-        
-        rect(w, height, width / bars, h * 0.66);
-  
-        // let r = 0;
-        // let g = 200 * (i / bars);
-        // let b = h + (50 * (i / bars));
-  
-        // fill(r, g, b);
-      }
-    }
 
     const bass = fft.getEnergy("bass");
     // const lowMid = fft.getEnergy("lowMid");
@@ -124,9 +122,36 @@ function draw() {
     let bassRadius = mapBass;
     let midRadius = mapMid;
     let trebleRadius = mapTreble;
+
+    if (intensity > intensityBorder) {
+      background(0, 0, 0);
+    }
+
+    if (bars !== 1) {
+      noStroke(); // No outlines
+      fill(color3);
+
+      if (intensity > intensityBorder) {
+        fill(color4);
+      }
+  
+      for (let i = 0; i < bars; i++) {
+        const w = map(i, 0, bars, 0, width);
+        const h = map(spectrum[i], 0, 255, height, 0) - height;
+        
+        rect(w, height, width / bars, h * 0.66);
+  
+        // let r = 0;
+        // let g = 200 * (i / bars);
+        // let b = h + (50 * (i / bars));
+  
+        // fill(r, g, b);
+      }
+    }
     
     translate(window.innerWidth / 2, window.innerHeight / 2);
-    stroke(0, 255, 204);
+
+    stroke(color1);
 
     for (i = 0; i < halos; i++) {
       rotate(4 * PI / halos);
@@ -134,13 +159,23 @@ function draw() {
       // Draw lines
       strokeWeight(1);
 
-      stroke(0, 255, 204);
+      stroke(color1);
+
+      if (intensity > intensityBorder) {
+        stroke(color2);
+      }
+
       line(mapBass, bassRadius * 0.75 / 2, 0, bassRadius * 0.75);
 
       stroke(255, 255, 255);
       line(mapMid, midRadius / 2, 0, midRadius);
 
-      stroke(0, 255, 204);
+      stroke(color1);
+
+      if (intensity > intensityBorder) {
+        stroke(color2);
+      }
+
       line(mapTreble, trebleRadius * 1.2 / 2, 0, trebleRadius * 1.2);
 
       // Draw points
@@ -149,7 +184,7 @@ function draw() {
 
       point(mapBass, bassRadius * 1.5);
       point(mapMid, midRadius * 1.4);
-      point(mapTreble, trebleRadius * 1.3);
+      // point(mapTreble, trebleRadius * 1.3);
 
       // Experimental
       // point(mapBass, bassRadius * 1.6);
@@ -184,4 +219,8 @@ function togglePlayback() {
       audio.play();
     }
   }
+}
+
+function limit(num, min, max) {
+  return num > max ? max : num < min ? min : num;
 }
