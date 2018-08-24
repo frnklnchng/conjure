@@ -1,3 +1,7 @@
+const intensityBorder = 0.215;
+const radiusMultiplier = 1;
+const barsMultiplier = 0.7;
+
 let file = document.getElementById("input")
 let loading = document.getElementById("loading");
 let audio;
@@ -7,10 +11,8 @@ let newInput = false;
 
 file.onchange = function () {
   if (this.files[0]) {
-    if (audio) {
-      audio.stop();
-      audio.disconnect();
-    }
+    audio.stop();
+    audio.disconnect();
 
     audio = loadSound(URL.createObjectURL(this.files[0]));
     loading.classList.add("true");
@@ -113,66 +115,64 @@ function draw() {
     // const combo = fft.getEnergy("bass", "lowMid");
     // const mapCombo = map(combo, 0, 255, -125, 125);
 
-    let bassRadius = mapBass;
-    let midRadius = mapMid;
-    let trebleRadius = mapTreble;
+    let bassRadius = mapBass * radiusMultiplier;
+    let midRadius = mapMid * radiusMultiplier;
+    let trebleRadius = mapTreble * radiusMultiplier;
 
-    let halosColor;
-    let barsColor;
+    let halosColor = "rgb(0, 255, 204)";
+    let barsColor = "rgba(0, 255, 204, 0.25)";
+
+    // console.log(intensity);
     
-    if (intensity > 0.2) {
+    if (intensity > intensityBorder) {
+      background(0, 0, 0);
       halosColor = "rgb(255, 0, 51)";
       barsColor = "rgba(255, 0, 51, 0.25)";
     }
-    else if (intensity > 0.1866666667) {
+    else if (intensity > intensityBorder - 0.01) {
+      background(24, 24, 26);
       halosColor = "rgb(232, 23, 65)";
       barsColor = "rgba(232, 23, 65, 0.25)";
     }
-    else if (intensity > 0.1733333333) {
+    else if (intensity > intensityBorder - 0.02) {
+      background(27, 27, 29);
       halosColor = "rgb(209, 46, 79)";
       barsColor = "rgba(209, 46, 79, 0.25)";
     }
-    else if (intensity > 0.16) {
+    else if (intensity > intensityBorder - 0.03) {
+      background(30, 30, 33);
       halosColor = "rgb(185, 70, 93)";
       barsColor = "rgba(185, 70, 93, 0.25)";
     }
-    else if (intensity > 0.1466666667) {
+    else if (intensity > intensityBorder - 0.04) {
       halosColor = "rgb(162, 93, 107)";
       barsColor = "rgba(162, 93, 107, 0.25)";
     }
-    else if (intensity > 0.1333333334) {
+    else if (intensity > intensityBorder - 0.05) {
       halosColor = "rgb(139, 116, 121)";
       barsColor = "rgba(139, 116, 121, 0.25)";
     }
-    else if (intensity > 0.12) {
+    else if (intensity > intensityBorder - 0.06) {
       halosColor = "rgb(116, 139, 134)";
       barsColor = "rgba(116, 139, 134, 0.25)";
     }
-    else if (intensity > 0.1066666667) {
+    else if (intensity > intensityBorder - 0.07) {
       halosColor = "rgb(93, 162, 148)";
       barsColor = "rgba(93, 162, 148, 0.25)";
     }
-    else if (intensity > 0.09333333336) {
+    else if (intensity > intensityBorder - 0.08) {
       halosColor = "rgb(70, 185, 162)";
       barsColor = "rgba(70, 185, 162, 0.25)";
     }
-    else if (intensity > 0.08000000003) {
+    else if (intensity > intensityBorder - 0.09) {
       halosColor = "rgb(46, 209, 176)";
       barsColor = "rgba(46, 209, 176, 0.25)";
     }
-    else if (intensity > 0.0666666667) {
+    else if (intensity > intensityBorder - 0.1) {
       halosColor = "rgb(23, 232, 190)";
       barsColor = "rgba(23, 232, 190, 0.25)";
     }
-    else {
-      halosColor = "rgb(0, 255, 204)";
-      barsColor = "rgba(0, 255, 204, 0.25)";
-    }
-
-    // if (intensity > intensityBorder) {
-    //   background(0, 0, 0);
-    // }
-
+                  
     if (bars !== 1) {
       noStroke(); // No outlines
       fill(barsColor);
@@ -180,8 +180,18 @@ function draw() {
       for (let i = 0; i < bars; i++) {
         const w = map(i, 0, bars, 0, width);
         const h = map(spectrum[i], 0, 255, height, 0) - height;
+        const foo = map(i, 0, bars, 0, width);
+        const bar = map(spectrum[i], 0, 255, height, 0) - height;
+        const a = map(i, 0, bars, width, 0);
+        const b = map(spectrum[i], 0, 255, 0, height);
+        const x = map(i, 0, bars, width, 0);
+        const y = map(spectrum[i], 0, 255, 0, height);
 
-        rect(w, height, width / bars, h * 0.66);
+        rect(w, height, width / bars, h * barsMultiplier);
+        rect(foo, 0, width / bars, -1 * bar * barsMultiplier);
+        rect(a, height, width / bars, -1 * b * barsMultiplier);
+        rect(x, 0, width / bars, y * barsMultiplier);
+
 
         // let r = 0;
         // let g = 200 * (i / bars);
@@ -215,8 +225,9 @@ function draw() {
       stroke(255, 255, 255);
 
       point(mapBass, bassRadius * 1.5);
+      point(mapMid, midRadius * 1.6);
       point(mapMid, midRadius * 1.4);
-      // point(mapTreble, trebleRadius * 1.3);
+      point(mapTreble, trebleRadius * 0.9);
 
       // Experimental
       // point(mapBass, bassRadius * 1.6);
