@@ -144,34 +144,34 @@ function draw() {
       halosColor = "rgb(185, 70, 93)";
       barsColor = "rgba(185, 70, 93, 0.25)";
     }
-    else if (intensity > intensityBorder - 0.04) {
-      halosColor = "rgb(162, 93, 107)";
-      barsColor = "rgba(162, 93, 107, 0.25)";
-    }
-    else if (intensity > intensityBorder - 0.05) {
-      halosColor = "rgb(139, 116, 121)";
-      barsColor = "rgba(139, 116, 121, 0.25)";
-    }
-    else if (intensity > intensityBorder - 0.06) {
-      halosColor = "rgb(116, 139, 134)";
-      barsColor = "rgba(116, 139, 134, 0.25)";
-    }
-    else if (intensity > intensityBorder - 0.07) {
-      halosColor = "rgb(93, 162, 148)";
-      barsColor = "rgba(93, 162, 148, 0.25)";
-    }
-    else if (intensity > intensityBorder - 0.08) {
-      halosColor = "rgb(70, 185, 162)";
-      barsColor = "rgba(70, 185, 162, 0.25)";
-    }
-    else if (intensity > intensityBorder - 0.09) {
-      halosColor = "rgb(46, 209, 176)";
-      barsColor = "rgba(46, 209, 176, 0.25)";
-    }
-    else if (intensity > intensityBorder - 0.1) {
-      halosColor = "rgb(23, 232, 190)";
-      barsColor = "rgba(23, 232, 190, 0.25)";
-    }
+    // else if (intensity > intensityBorder - 0.04) {
+    //   halosColor = "rgb(162, 93, 107)";
+    //   barsColor = "rgba(162, 93, 107, 0.25)";
+    // }
+    // else if (intensity > intensityBorder - 0.05) {
+    //   halosColor = "rgb(139, 116, 121)";
+    //   barsColor = "rgba(139, 116, 121, 0.25)";
+    // }
+    // else if (intensity > intensityBorder - 0.06) {
+    //   halosColor = "rgb(116, 139, 134)";
+    //   barsColor = "rgba(116, 139, 134, 0.25)";
+    // }
+    // else if (intensity > intensityBorder - 0.07) {
+    //   halosColor = "rgb(93, 162, 148)";
+    //   barsColor = "rgba(93, 162, 148, 0.25)";
+    // }
+    // else if (intensity > intensityBorder - 0.08) {
+    //   halosColor = "rgb(70, 185, 162)";
+    //   barsColor = "rgba(70, 185, 162, 0.25)";
+    // }
+    // else if (intensity > intensityBorder - 0.09) {
+    //   halosColor = "rgb(46, 209, 176)";
+    //   barsColor = "rgba(46, 209, 176, 0.25)";
+    // }
+    // else if (intensity > intensityBorder - 0.1) {
+    //   halosColor = "rgb(23, 232, 190)";
+    //   barsColor = "rgba(23, 232, 190, 0.25)";
+    // }
                   
     if (bars !== 1) {
       noStroke(); // No outlines
