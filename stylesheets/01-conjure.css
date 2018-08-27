@@ -26,6 +26,16 @@ body {
   display: inherit;
 }
 
+#github {
+  position: fixed;
+  bottom: 18px;
+  left: 190px;
+  height: 48px;
+  width: 48px;
+  opacity: 0;
+  transition: 0.6s ease;
+}
+
 .name {
   font: normal 48px 'Open Sans', sans-serif;
   position: fixed;
@@ -151,15 +161,5 @@ body:hover #github {
   height: 48px;
   width: 48px;
   opacity: 1;
-  transition: 0.6s ease;
-}
-
-#github {
-  position: fixed;
-  bottom: 18px;
-  left: 152px;
-  height: 48px;
-  width: 48px;
-  opacity: 0;
   transition: 0.6s ease;
 }

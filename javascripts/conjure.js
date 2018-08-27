@@ -21,14 +21,14 @@ file.onchange = function () {
 }
 
 function setup() {
-  audio = loadSound('https://raw.githubusercontent.com/frnklnchng/evoke/master/assets/truth.mp3');
+  audio = loadSound('https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/truth.mp3');
   loading.classList.add("true");
   amplitude = new p5.Amplitude();
 
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.style('display', 'block');
 
-  const name = createDiv('evoke');
+  const name = createDiv('conjure');
   name.addClass('name');
 
   const instructions = createDiv('press the spacebar to play/pause');

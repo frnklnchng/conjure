@@ -1,8 +1,8 @@
-# evoke
+# conjure
 
-[Live](https://frnklnchng.github.io/evoke/)
+[Live](https://frnklnchng.github.io/conjure/)
 
-Evoke is a dynamic audio visualizer. Evoke utilizes the JavaScript Processing library, p5.js standard, sound, and dom libraries.
+Conjure is a dynamic audio visualizer. Conjure utilizes the JavaScript Processing library, p5.js standard, sound, and dom libraries.
 
 This project was created within the timeframe of a week, and I fully expect to be implementing more features and improvements over time.
 
@@ -61,11 +61,11 @@ Although numerous other libraries could have been used for this project, p5.js w
 
 ## Design
 
-Evoke was designed with the user experience in mind. This means a clean, clutter-free interface that anyone would enjoy using. Considering the timeframe in which the project was created, I focused primarily on the core features and the styling of these visual components and features sequentially.
+Conjure was designed with the user experience in mind. This means a clean, clutter-free interface that anyone would enjoy using. Considering the timeframe in which the project was created, I focused primarily on the core features and the styling of these visual components and features sequentially.
 
 ## Technologies
 
-Evoke is a project intended as a portfolio piece to be built in a relatively short timeframe. Because of this, technologies that are readily available.
+Conjure is a project intended as a portfolio piece to be built in a relatively short timeframe. Because of this, technologies that are readily available.
 
 p5.js was chosen for its robust dom and sound libraries - used to create a consistent codebase. Readily available functions such as `map`, `analyze`, and the crucial `fft` object were paramount in analyzing and mapping audio signals to variables such as color, radius, height, and width.
 

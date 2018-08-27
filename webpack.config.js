@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './javascripts/evoke.js',
+  entry: './javascripts/conjure.js',
   output: {
     path: path.resolve('javascripts'),
     filename: 'bundle.js'

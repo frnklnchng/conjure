@@ -1,13 +1,13 @@
-# evoke
+# conjure
 
 ## Overview
-evoke is a dynamic music visualizer created using p5.js. evoke will analyze the frequency, amplitude, time, and other aspects of the input signal, and reactively draw and transform based on this data taken from the signal using p5.js.
+conjure is a dynamic music visualizer created using p5.js. conjure will analyze the frequency, amplitude, time, and other aspects of the input signal, and reactively draw and transform based on this data taken from the signal using p5.js.
 
 Users will be able to alter aspects of the visualization such as sensitivity, etc.
 
 ## Functionality
 
-In evoke, users will be able to:
+In conjure, users will be able to:
 
 - [ ] Select a local music file to be parsed
 - [ ] Alter the sensitivity of the visualizations
@@ -17,13 +17,13 @@ In evoke, users will be able to:
 
 ![wireframe](./docs/wireframe.png)
 
-evoke will consist of a single screen with the visualization canvas, with the visualization in the center of the screen.
+conjure will consist of a single screen with the visualization canvas, with the visualization in the center of the screen.
 
 To the top, a play/pause button for the music and a slider for volume. To the right, a slider for the sensitivity of the visualization. And to the left, a link to my GitHub will be included.
 
 ## Technologies
 
-evoke will utilize the following technologies:
+conjure will utilize the following technologies:
 
 - `p5.js` library to implement the visualizations
 
