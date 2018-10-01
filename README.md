@@ -65,7 +65,7 @@ Conjure was designed with the user experience in mind. This means a clean, clutt
 
 ## Technologies
 
-Conjure is a project intended as a portfolio piece to be built in a relatively short timeframe. Because of this, technologies that are readily available.
+Conjure is a project intended as a portfolio piece to be built in a relatively short timeframe. Because of this, technologies that are readily available were chosen in favor.
 
 p5.js was chosen for its robust dom and sound libraries - used to create a consistent codebase. Readily available functions such as `map`, `analyze`, and the crucial `fft` object were paramount in analyzing and mapping audio signals to variables such as color, radius, height, and width.
 
