@@ -179,24 +179,25 @@ function draw() {
       for (let i = 0; i < bars; i++) {
         const w = map(i, 0, bars, 0, width);
         const h = map(spectrum[i], 0, 255, height, 0) - height;
-        const foo = map(i, 0, bars, 0, width);
-        const bar = map(spectrum[i], 0, 255, height, 0) - height;
-        const a = map(i, 0, bars, width, 0);
-        const b = map(spectrum[i], 0, 255, 0, height);
         const x = map(i, 0, bars, width, 0);
         const y = map(spectrum[i], 0, 255, 0, height);
+        // const foo = map(i, 0, bars, 0, width);
+        // const bar = map(spectrum[i], 0, 255, height, 0) - height;
+        // const a = map(i, 0, bars, width, 0);
+        // const b = map(spectrum[i], 0, 255, 0, height);
 
         rect(w, height, width / bars, h * barsMultiplier);
-        rect(foo, 0, width / bars, -1 * bar * barsMultiplier);
-        rect(a, height, width / bars, -1 * b * barsMultiplier);
+        rect(w, 0, width / bars, -1 * h * barsMultiplier);
+        rect(x, height, width / bars, -1 * y * barsMultiplier);
         rect(x, 0, width / bars, y * barsMultiplier);
 
-
-        // let r = 0;
-        // let g = 200 * (i / bars);
-        // let b = h + (50 * (i / bars));
-
-        // fill(r, g, b);
+        if (intensity > intensityBorder) {
+          let r = 255;
+          let g = 200 * (i / bars);
+          let b = h + (50 * (i / bars));
+  
+          fill(r, g, b);
+        }
       }
     }
 
