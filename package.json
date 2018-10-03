@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "webpack --watch",
+    "server": "http-server . -c-1 -o",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

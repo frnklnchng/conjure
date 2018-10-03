@@ -254,12 +254,7 @@ function windowResized() {
 
 function togglePlayback() {
   if (audio && audio.isLoaded()) {
-    if (audio.isPlaying()) {
-      audio.pause();
-    }
-    else {
-      audio.play();
-    }
+    audio.isPlaying() ? audio.pause() : audio.play();
   }
 }
 
