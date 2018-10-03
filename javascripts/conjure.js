@@ -191,13 +191,13 @@ function draw() {
         rect(x, height, width / bars, -1 * y * barsMultiplier);
         rect(x, 0, width / bars, y * barsMultiplier);
 
-        if (intensity > intensityBorder) {
-          let r = 255;
-          let g = 200 * (i / bars);
-          let b = h + (50 * (i / bars));
+        // if (intensity > intensityBorder) {
+        //   let r = 255;
+        //   let g = 200 * (i / bars);
+        //   let b = h + (50 * (i / bars));
   
-          fill(r, g, b);
-        }
+        //   fill(r, g, b);
+        // }
       }
     }
 
@@ -233,6 +233,14 @@ function draw() {
       // point(mapBass, bassRadius * 1.6);
       // point(mapMid, midRadius * 1.7);
       // point(mapTreble, trebleRadius * 1.8);
+
+      // Stars
+      // const x = random(windowWidth);
+      // const y = random(windowHeight - 200);
+
+      // noStroke();
+      // fill(halosColor);
+      // ellipse(x, y, 2, 2);
     }
   }
 }
