@@ -234,9 +234,9 @@ function draw() {
       point(mapMid, midRadius * 1.7);
       point(mapTreble, trebleRadius * 1.8);
 
-      // point(mapBass, bassRadius * 1.8);
-      // point(mapMid, midRadius * 1.7);
-      // point(mapTreble, trebleRadius * 1.6);
+      point(mapBass, bassRadius * 1.8);
+      point(mapMid, midRadius * 1.7);
+      point(mapTreble, trebleRadius * 1.6);
 
       // Stars
       // const x = random(windowWidth);
