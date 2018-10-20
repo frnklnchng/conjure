@@ -100,23 +100,27 @@ function draw() {
     const spectrum = fft.analyze();
 
     const bass = fft.getEnergy("bass");
-    // const lowMid = fft.getEnergy("lowMid");
+    const lowMid = fft.getEnergy("lowMid");
     const mid = fft.getEnergy("mid");
-    // const highMid = fft.getEnergy("highMid");
+    const highMid = fft.getEnergy("highMid");
     const treble = fft.getEnergy("treble");
 
     const mapBass = map(bass, 0, 255, -100, 100);
-    // const mapLowMid = map(lowMid, 0, 255, -125, 125);
+    const mapLowMid = map(lowMid, 0, 255, -125, 125);
     const mapMid = map(mid, 0, 255, -150, 150);
-    // const mapHighMid = map(highMid, 0, 255, -175, 175);
+    const mapHighMid = map(highMid, 0, 255, -175, 175);
     const mapTreble = map(treble, 0, 255, -200, 200);
 
-    // const combo = fft.getEnergy("bass", "lowMid");
-    // const mapCombo = map(combo, 0, 255, -125, 125);
+    const combo = fft.getEnergy("bass", "lowMid");
+    const mapCombo = map(combo, 0, 255, -125, 125);
 
     let bassRadius = mapBass * radiusMultiplier;
+    let lowMidRadius = mapLowMid * radiusMultiplier;
     let midRadius = mapMid * radiusMultiplier;
+    let highMidRadius = mapHighMid * radiusMultiplier;
     let trebleRadius = mapTreble * radiusMultiplier;
+
+    let comboRadius = mapCombo * radiusMultiplier;
 
     let halosColor = "rgb(0, 255, 204)";
     let barsColor = "rgba(0, 255, 204, 0.25)";
@@ -230,21 +234,23 @@ function draw() {
       point(mapTreble, trebleRadius * 0.9);
 
       // Experimental
-      point(mapBass, bassRadius * 1.6);
-      point(mapMid, midRadius * 1.7);
-      point(mapTreble, trebleRadius * 1.8);
+      if (intensity > intensityBorder) {
+        point(mapCombo, comboRadius * 3.6);
+        point(mapCombo, comboRadius * 3.7);
+        point(mapLowMid, lowMidRadius * 3.7);
+        point(mapLowMid, lowMidRadius * 3.8);
+        point(mapHighMid, highMidRadius * 3.8);
+        point(mapHighMid, highMidRadius * 3.6);
 
-      point(mapBass, bassRadius * 1.8);
-      point(mapMid, midRadius * 1.7);
-      point(mapTreble, trebleRadius * 1.6);
+        // Static
+        // const x = random(windowWidth);
+        // const y = random(windowHeight - 200);
 
-      // Stars
-      // const x = random(windowWidth);
-      // const y = random(windowHeight - 200);
-
-      // noStroke();
-      // fill(halosColor);
-      // ellipse(x, y, 2, 2);
+        // noStroke();
+        // fill(halosColor);
+        // rect(x, y, 4, 4);
+        // rect(y, x, 4, 4);
+      }
     }
   }
 }
