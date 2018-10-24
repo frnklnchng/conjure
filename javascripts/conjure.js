@@ -186,10 +186,12 @@ function draw() {
         const h = map(spectrum[i], 0, 255, height, 0) - height;
         const x = map(i, 0, bars, width, 0);
         const y = map(spectrum[i], 0, 255, 0, height);
-        // const foo = map(i, 0, bars, 0, width);
-        // const bar = map(spectrum[i], 0, 255, height, 0) - height;
-        // const a = map(i, 0, bars, width, 0);
-        // const b = map(spectrum[i], 0, 255, 0, height);
+
+        // Experimental
+        const foo = map(i, 0, bars, 0, width);
+        const bar = map(spectrum[i], 0, 255, height, 0) - height;
+        const a = map(i, 0, bars, width, 0);
+        const b = map(spectrum[i], 0, 255, 0, height);
 
         rect(w, height, width / bars, h * barsMultiplier);
         rect(w, 0, width / bars, -1 * h * barsMultiplier);
