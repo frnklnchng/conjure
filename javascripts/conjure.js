@@ -273,13 +273,13 @@ function draw() {
         // rect(y, x, 4, 4);
       }
 
-      // if (intensity > intensityBorder - 0.1) {
-      //   point(mapCombo, comboRadius * 2.6);
-      //   point(mapCombo, comboRadius * 2.7);
-      //   point(mapLowMid, lowMidRadius * 2.7);
-      //   point(mapLowMid, lowMidRadius * 2.8);
-      //   point(mapHighMid, highMidRadius * 2.8);
-      //   point(mapHighMid, highMidRadius * 2.6);
+      if (intensity > intensityBorder - 0.2) {
+        point(mapCombo, comboRadius * 2.1);
+        point(mapCombo, comboRadius * 2.2);
+        point(mapLowMid, lowMidRadius * 2.2);
+        point(mapLowMid, lowMidRadius * 2.3);
+        point(mapHighMid, highMidRadius * 2.3);
+        point(mapHighMid, highMidRadius * 2.1);
 
         // Static
         // const x = random(windowWidth);
@@ -289,7 +289,7 @@ function draw() {
         // fill(halosColor);
         // rect(x, y, 4, 4);
         // rect(y, x, 4, 4);
-      // }
+      }
       
       // if (intensity > intensityBorder - 0.1) {
       //   point(mapCombo, comboRadius * 2.6);
