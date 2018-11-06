@@ -326,7 +326,7 @@ function draw() {
         // rect(x, y, 4, 4);
         // rect(y, x, 4, 4);
       // }
-      
+
       // if (intensity > intensityBorder - 0.1) {
       //   point(mapCombo, comboRadius * 2.6);
       //   point(mapCombo, comboRadius * 2.7);
@@ -368,6 +368,10 @@ function togglePlayback() {
   if (audio && audio.isLoaded()) {
     audio.isPlaying() ? audio.pause() : audio.play();
   }
+}
+
+function toggleColors() {
+  
 }
 
 function limit(num, min, max) {
