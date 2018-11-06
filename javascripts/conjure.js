@@ -326,6 +326,24 @@ function draw() {
         // rect(x, y, 4, 4);
         // rect(y, x, 4, 4);
       // }
+      
+      // if (intensity > intensityBorder - 0.1) {
+      //   point(mapCombo, comboRadius * 2.6);
+      //   point(mapCombo, comboRadius * 2.7);
+      //   point(mapLowMid, lowMidRadius * 2.7);
+      //   point(mapLowMid, lowMidRadius * 2.8);
+      //   point(mapHighMid, highMidRadius * 2.8);
+      //   point(mapHighMid, highMidRadius * 2.6);
+
+        // Static
+        // const x = random(windowWidth);
+        // const y = random(windowHeight - 200);
+
+        // noStroke();
+        // fill(halosColor);
+        // rect(x, y, 4, 4);
+        // rect(y, x, 4, 4);
+      // }
     }
   }
 }
