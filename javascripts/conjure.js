@@ -79,6 +79,7 @@ function draw() {
   // background(0, 0, 0);
 
   // if (audio) {
+  //   console.log(smooth);
   //   console.log(audio.currentTime());
   //   console.log(intensity);
   //   console.log("audio loaded");
