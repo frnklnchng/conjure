@@ -122,6 +122,7 @@ function draw() {
     // console.log(mapMid);
     // console.log(mapHighMid);
     // console.log(mapTreble);
+    // console.log(mapCombo);
 
     let bassRadius = mapBass * radiusMultiplier;
     let lowMidRadius = mapLowMid * radiusMultiplier;
