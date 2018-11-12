@@ -117,6 +117,12 @@ function draw() {
     const combo = fft.getEnergy("bass", "lowMid");
     const mapCombo = map(combo, 0, 255, -125, 125);
 
+    // console.log(mapBass);
+    // console.log(mapLowMid);
+    // console.log(mapMid);
+    // console.log(mapHighMid);
+    // console.log(mapTreble);
+
     let bassRadius = mapBass * radiusMultiplier;
     let lowMidRadius = mapLowMid * radiusMultiplier;
     let midRadius = mapMid * radiusMultiplier;
