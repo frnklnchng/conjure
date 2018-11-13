@@ -83,6 +83,7 @@ function draw() {
   //   console.log(audio.currentTime());
   //   console.log(intensity);
   //   console.log("audio loaded");
+  //   console.log(newInput);
   // }
 
   if (audio && audio.isLoaded() && !audio.isPaused() && !audio.isPlaying()) {
