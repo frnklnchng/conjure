@@ -17,6 +17,7 @@ file.onchange = function () {
     audio = loadSound(URL.createObjectURL(this.files[0]));
     loading.classList.add("true");
     newInput = true;
+    // console.log("new audio");
   }
 }
 
