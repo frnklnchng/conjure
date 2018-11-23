@@ -366,7 +366,7 @@ function togglePlayback() {
 }
 
 function toggleColors() {
-  
+  // console.log(halosColor);
 }
 
 function limit(num, min, max) {
