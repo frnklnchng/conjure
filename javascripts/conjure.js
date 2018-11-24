@@ -367,6 +367,7 @@ function togglePlayback() {
 
 function toggleColors() {
   // console.log(halosColor);
+  // console.log(barsColor);
 }
 
 function limit(num, min, max) {
