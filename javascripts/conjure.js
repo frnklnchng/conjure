@@ -189,7 +189,8 @@ function draw() {
       halosColor = "rgb(23, 232, 190)";
       barsColor = "rgba(23, 232, 190, 0.25)";
     }
-                  
+
+    // Validate bars selection
     if (bars !== 1) {
       noStroke(); // No outlines
       fill(barsColor);
