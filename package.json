@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "webpack --watch",
+    "webpack": "webpack --watch",
     "server": "http-server . -c-1 -o",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
