@@ -1,7 +1,7 @@
 {
   "name": "conjure",
   "version": "1.0.0",
-  "description": "## Overview conjure is a dynamic music visualizer created using the SoundJS, the Web Audio API, and Three.js. conjure will analyze the frequency, amplitude, time, and other aspects of the input signal using the Web Audio API, and reactively draw and transform SVG based on this data taken from the signal using Three.js.",
+  "description": "## conjure is a dynamic music visualizer created using the SoundJS, the Web Audio API, and Three.js. conjure will analyze the frequency, amplitude, time, and other aspects of the input signal using the Web Audio API, and reactively draw and transform SVG based on this data taken from the signal using Three.js.",
   "main": "webpack.config.js",
   "directories": {
     "doc": "docs",
