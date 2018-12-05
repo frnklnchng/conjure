@@ -86,6 +86,7 @@ function draw() {
   //   console.log(newInput);
   //   console.log(audio);
   //   console.log(audio.isLoaded());
+  //   console.log(fft);
   // }
 
   if (audio && audio.isLoaded() && !audio.isPaused() && !audio.isPlaying()) {
