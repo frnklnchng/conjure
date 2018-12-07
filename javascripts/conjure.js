@@ -192,6 +192,7 @@ function draw() {
     }
 
     // Fade out draw transitions
+    // https://p5js.org/examples/hello-p5-drawing.html
 
     // Validate bars selection
     if (bars !== 1) {
