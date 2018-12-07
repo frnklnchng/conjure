@@ -191,6 +191,8 @@ function draw() {
       barsColor = "rgba(23, 232, 190, 0.25)";
     }
 
+    // Fade out draw transitions
+
     // Validate bars selection
     if (bars !== 1) {
       noStroke(); // No outlines
