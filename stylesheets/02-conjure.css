@@ -4,7 +4,11 @@ body {
   user-select: none;
 }
 
-#input {
+#custom-header {
+  margin-bottom: 10px;
+}
+
+#custom {
   font: normal 12px 'Open Sans', sans-serif;
   position: fixed;
   top: 10px;
@@ -132,7 +136,7 @@ body {
   right: 10px;
 }
 
-body:hover #input {
+body:hover #custom {
   opacity: 1;
   transition: 0.6s ease;
 }
