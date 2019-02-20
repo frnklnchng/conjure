@@ -26,9 +26,9 @@ function setup() {
     'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/truth.mp3',
     'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/touched.mp3',
     'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/fellow_feeling.mp3'
-  ]
+  ];
 
-  audio = loadSound(curses[(Math.random() * curses.length) - 1]);
+  audio = loadSound(curses[Math.floor(Math.random() * curses.length)]);
   loading.classList.add("true");
   amplitude = new p5.Amplitude();
 
