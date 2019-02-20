@@ -113,13 +113,16 @@ function draw() {
     }
   }
 
+  let status = instructions.innerHTML === "press the spacebar to play";
+  let loaded = instructions.innerHTML === "loading";
+
   if (!audio || !audio.isLoaded()) {
     instructions.innerHTML = "loading";
   }
-  else if (audio.isPaused() || !audio.isPlaying()) {
+  else if ((audio.isPaused() || !audio.isPlaying()) && !status) {
     instructions.innerHTML = "press the spacebar to play";
   }
-  else {
+  else if (audio.isPlaying() && (status || loaded)) {
     instructions.innerHTML = "press the spacebar to pause";
   }
 
