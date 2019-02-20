@@ -32,8 +32,9 @@ function setup() {
   loading.classList.add("true");
   amplitude = new p5.Amplitude();
 
-  canvas = createCanvas(window.innerWidth, window.innerHeight);
+  const canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.style('display', 'block');
+  canvas.mouseClicked(togglePlayback);
 
   const name = createDiv('conjure');
   name.addClass('name');
