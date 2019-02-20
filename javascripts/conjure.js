@@ -162,6 +162,20 @@ function draw() {
     let barsColor = "rgba(0, 255, 204, 0.25)";
 
     // console.log(intensity);
+
+    // colorMode(RGB);
+    // const backgroundFrom = color(33, 33, 36);
+    // const backgroundTo = color(0, 0, 0);
+    // const halosFrom = color(0, 255, 204);
+    // const halosTo = color(255, 0, 51);
+    // const barsFrom = color('rgba(0, 255, 204, 0.25)');
+    // const barsTo = color('rgba(255, 0, 51, 0.25)');
+
+    // const lerpIncrement = map(intensity, 0, intensityBorder, 0, 1);
+
+    // background(lerpColor(backgroundFrom, backgroundTo, lerpIncrement));
+    // halosColor = lerpColor(halosFrom, halosTo, lerpIncrement);
+    // barsColor = lerpColor(barsFrom, barsTo, lerpIncrement);
     
     if (intensity > intensityBorder) {
       background(0, 0, 0);
