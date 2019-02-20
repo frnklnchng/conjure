@@ -22,7 +22,13 @@ file.onchange = function () {
 }
 
 function setup() {
-  audio = loadSound('https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/truth.mp3');
+  const curses = [
+    'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/truth.mp3',
+    'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/touched.mp3',
+    'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/fellow_feeling.mp3'
+  ]
+
+  audio = loadSound(curses[(Math.random() * curses.length) - 1]);
   loading.classList.add("true");
   amplitude = new p5.Amplitude();
 
@@ -32,8 +38,8 @@ function setup() {
   const name = createDiv('conjure');
   name.addClass('name');
 
-  const instructions = createDiv('press the spacebar to play/pause');
-  instructions.addClass('instructions');
+  const instructions = createDiv('loading');
+  instructions.id('instructions');
 
   const volumeLabel = createDiv('volume');
   volumeLabel.addClass('volumeLabel');
@@ -69,6 +75,8 @@ function setup() {
 }
 
 function draw() {
+  const instructions = document.getElementById("instructions");
+
   const volume = volumeSlider.value();
   const smooth = -sensitivitySlider.value(); // Sensitivity toggle
   const bars = Math.pow(2, barSlider.value()); // Frequencies toggle
@@ -89,6 +97,10 @@ function draw() {
   //   console.log(fft);
   // }
 
+  // if (loading.class() === "true") {
+  //   instructions.innerHTML = "loading";
+  // }
+
   if (audio && audio.isLoaded() && !audio.isPaused() && !audio.isPlaying()) {
     loading.classList.remove("true");
 
@@ -98,6 +110,16 @@ function draw() {
       audio.play();
       newInput = false;
     }
+  }
+
+  if (!audio || !audio.isLoaded()) {
+    instructions.innerHTML = "loading";
+  }
+  else if (audio.isPaused() || !audio.isPlaying()) {
+    instructions.innerHTML = "press the spacebar to play";
+  }
+  else {
+    instructions.innerHTML = "press the spacebar to pause";
   }
 
   if (fft) {
@@ -347,6 +369,10 @@ function draw() {
     }
   }
 }
+
+// function mouseClicked() {
+//   togglePlayback();
+// }
 
 function keyPressed() {
   switch (keyCode) {

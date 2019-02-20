@@ -45,7 +45,7 @@ body {
   transition: 1.8s ease;
 }
 
-.instructions {
+#instructions {
   font: normal 24px 'Open Sans', sans-serif;
   position: fixed;
   bottom: 10px;
@@ -142,7 +142,7 @@ body:hover .name {
   transition: 0.6s ease;
 }
 
-body:hover .instructions {
+body:hover #instructions {
   opacity: 1;
   transition: 0.6s ease;
 }
