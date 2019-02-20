@@ -113,17 +113,20 @@ function draw() {
     }
   }
 
-  let status = instructions.innerHTML === "press the spacebar to play";
+  // let status = instructions.innerHTML === "press the spacebar to play";
+  let status = instructions.innerHTML === "paused";
   let loaded = instructions.innerHTML === "loading";
 
   if (!audio || !audio.isLoaded()) {
     instructions.innerHTML = "loading";
   }
   else if ((audio.isPaused() || !audio.isPlaying()) && !status) {
-    instructions.innerHTML = "press the spacebar to play";
+    // instructions.innerHTML = "press the spacebar to play";
+    instructions.innerHTML = "paused";
   }
   else if (audio.isPlaying() && (status || loaded)) {
-    instructions.innerHTML = "press the spacebar to pause";
+    // instructions.innerHTML = "press the spacebar to pause";
+    instructions.innerHTML = "playing";
   }
 
   if (fft) {
