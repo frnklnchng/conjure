@@ -10,6 +10,7 @@ This project was created within the timeframe of a week, and I fully expect to b
   * Users are able to play their own audio files, or demo the preloaded audio
   * Visual aspects can be modified through various slider inputs
   * A intuitive UI and pleasing experience allow users to start without issue
+  * Press 'o' when the application is loaded for a secret song
   
 ### Playing local audio
 
