@@ -33,10 +33,10 @@ function setup() {
 
   const hex = Math.floor(Math.random() * curses.length);
 
-  if (hex === 0) {
-    intensityBorder = 0.27;
-    // console.log("goodbye");
-  }
+  // if (hex === 0) {
+  //   intensityBorder = 0.27;
+  //   console.log("goodbye");
+  // }
 
   audio = loadSound(curses[hex]);
   loading.classList.add("true");
