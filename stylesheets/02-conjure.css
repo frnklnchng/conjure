@@ -30,6 +30,20 @@ body {
   display: inherit;
 }
 
+#greeting {
+  font: normal 32px 'Open Sans', sans-serif;
+  position: fixed;
+  top: 90%;
+  left: 50%; 
+  transform: translate(-50%, -90%); 
+  opacity: 0;
+  transition: 0.6s ease;
+}
+
+#greeting.true {
+  opacity: 1;
+}
+
 #github {
   position: fixed;
   bottom: 18px;

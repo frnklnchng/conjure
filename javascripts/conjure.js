@@ -4,10 +4,13 @@ const barsMultiplier = 0.7;
 
 let file = document.getElementById("input")
 let loading = document.getElementById("loading");
+let greeting = document.getElementById("greeting");
+
 let audio;
 let fft;
 
 let newInput = false;
+let newWindow = true;
 
 file.onchange = function () {
   if (this.files[0]) {
@@ -76,6 +79,12 @@ function setup() {
 }
 
 function draw() {
+  if (newWindow && audio && audio.isLoaded()) {
+    if (!greeting.classList.contains('true')) {
+      greeting.classList.add('true');
+    }
+  }
+
   const instructions = document.getElementById("instructions");
 
   const volume = volumeSlider.value();
@@ -259,6 +268,13 @@ function draw() {
         rect(x, height, width / bars, -1 * y * barsMultiplier);
         rect(x, 0, width / bars, y * barsMultiplier);
 
+        if (intensity > intensityBorder) {
+          rect(w, height, width / bars, h * 0.5);
+          rect(w, 0, width / bars, -1 * h * 0.5);
+          rect(x, height, width / bars, -1 * y * 0.5);
+          rect(x, 0, width / bars, y * 0.5);
+        }
+
         // if (intensity > intensityBorder) {
         //   let r = 255;
         //   let g = 200 * (i / bars);
@@ -412,6 +428,11 @@ function windowResized() {
 }
 
 function togglePlayback() {
+  if (greeting.classList.contains('true')) {
+    newWindow = false;
+    greeting.classList.remove('true');
+  }
+
   if (audio && audio.isLoaded()) {
     audio.isPlaying() ? audio.pause() : audio.play();
   }
