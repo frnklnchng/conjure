@@ -433,6 +433,11 @@ function keyPressed() {
 
       intensityBorder = 0.25;
 
+      if (greeting.classList.contains('true')) {
+        newWindow = false;
+        greeting.classList.remove('true');
+      }
+
       break;
     default:
       break;
