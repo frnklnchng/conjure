@@ -1,4 +1,4 @@
-const intensityBorder = 0.215;
+let intensityBorder = 0.215;
 const radiusMultiplier = 1;
 const barsMultiplier = 0.7;
 
@@ -26,12 +26,19 @@ file.onchange = function () {
 
 function setup() {
   const curses = [
+    // 'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/fellow_feeling.mp3',
     'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/truth.mp3',
-    'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/touched.mp3',
-    'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/fellow_feeling.mp3'
+    // 'https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/touched.mp3',
   ];
 
-  audio = loadSound(curses[Math.floor(Math.random() * curses.length)]);
+  const hex = Math.floor(Math.random() * curses.length);
+
+  if (hex === 0) {
+    intensityBorder = 0.27;
+    // console.log("goodbye");
+  }
+
+  audio = loadSound(curses[hex]);
   loading.classList.add("true");
   amplitude = new p5.Amplitude();
 
@@ -415,6 +422,17 @@ function keyPressed() {
   switch (keyCode) {
     case 32:
       togglePlayback();
+      break;
+    case 79:
+      audio.stop();
+      audio.disconnect();
+
+      audio = loadSound('https://raw.githubusercontent.com/frnklnchng/conjure/master/assets/fellow_feeling.mp3');
+      loading.classList.add("true");
+      newInput = true;
+
+      intensityBorder = 0.25;
+
       break;
     default:
       break;
