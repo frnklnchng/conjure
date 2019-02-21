@@ -268,7 +268,7 @@ function draw() {
         rect(x, height, width / bars, -1 * y * barsMultiplier);
         rect(x, 0, width / bars, y * barsMultiplier);
 
-        if (intensity > intensityBorder) {
+        if (intensity > 0.3) {
           rect(w, height, width / bars, h * 0.5);
           rect(w, 0, width / bars, -1 * h * 0.5);
           rect(x, height, width / bars, -1 * y * 0.5);
